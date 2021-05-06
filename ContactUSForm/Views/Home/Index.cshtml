@@ -1,0 +1,69 @@
+﻿@using AspNetCore.ReCaptcha;
+@model ContactUSForm.Models.ContactUSFormModel;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Contact US</h1>
+    <div class="contactus-form-div">
+        <form id="form" class="contactus-form" asp-action="Submit" asp-controller="Home">
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <label>First name</label>
+                            <input asp-for="FirstName" type="text" id="fname" required />
+                        </div>
+                        <div class="col">
+                            <label>Last name</label>
+                            <input asp-for="LastName" type="text" id="lname" required />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label>Your email</label>
+                            <input asp-for="Email" id="email" type="email" required pattern="^[a-zA-Z0-9]+([._+-][a-zA-Z0-9]+)*@@[a-zA-Z0-9]+.[a-zA-Z]{2,4}([.][a-zA-Z]{2,})?$" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+
+                            <label>Phone number</label>
+                            <input type="text" asp-for="PhoneNumber" id="phonenumber" maxlength="10" required pattern="^[1-9][0-9]{9}$" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label>Contact purpose</label>
+                            @Html.DropDownListFor(m => m.ContactPurpose,
+            new SelectList(Enum.GetValues(typeof(ContactPurpose))),
+            "Contact purpose")
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <label>Your message</label>
+                            <textarea class="msg" asp-for="Message" id="message" rows="8" cols="30"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="captcha">
+
+            </div>
+            @*<button class="g-recaptcha"
+                    data-sitekey="6LcjbsgaAAAAAFNDcl8dvO1DcJ6gynvo0JGbAdbh"
+                    data-callback='onSubmit'
+                    data-action='submit'>
+                Submit
+            </button>*@
+            <button class="submit" type="submit">SEND</button>
+        </form>
+    </div>
+</div>

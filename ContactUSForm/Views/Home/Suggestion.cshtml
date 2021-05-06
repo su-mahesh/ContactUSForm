@@ -1,0 +1,19 @@
+﻿@model IEnumerable<ContactUSForm.Models.ContactUSFormModel> 
+
+@{
+    ViewData["Title"] = "Suggestion";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="sug">
+    <div class="row">
+        <label class="col">Enter Headline</label>
+    </div>
+    <div class="row">
+        <textarea class="col" id="sug-text" placeholder="Enter Headline"></textarea>
+    </div>
+    <div class="row">
+        <button id="headline-sug" class="headline-sug">Headline Suggestions</button>
+    </div>
+    
+</div>
